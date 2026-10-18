@@ -1,0 +1,11 @@
+# poll logs (daily CSV + .meta.json sidecars) stay local
+data/*
+!data/.gitkeep
+
+.venv/
+__pycache__/
+*.pyc
+.env
+mise.local.toml
+.mise.local.toml
+.DS_Store

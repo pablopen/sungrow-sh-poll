@@ -1,0 +1,23 @@
+[tools]
+python = "3.13.9"
+uv = "latest"
+
+[env]
+_.file = ".env"   # HOST; written by `mise host <ip>`
+
+[tasks.host]
+description = "Set the inverter IP in .env (usage: mise host 192.168.1.50)"
+usage = 'arg "<ip>" help="inverter IP address"'
+run = """
+[ -f .env ] || cp .env.example .env
+{ grep -v '^HOST=' .env; echo "HOST=$usage_ip"; } > .env.tmp && mv .env.tmp .env
+echo "HOST=$usage_ip written to .env"
+"""
+
+[tasks.dump]
+description = "One-shot register dump (pass --settings for clock + EMS)"
+run = "uv run dump.py"
+
+[tasks.poll]
+description = "Live dashboard, 1s refresh, logs to data/ (pass --interval/--no-log)"
+run = "uv run poll.py"
