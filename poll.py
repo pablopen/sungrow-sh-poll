@@ -2,7 +2,7 @@
 """Live console dashboard for a Sungrow hybrid inverter.
 
 Polls the 5 fast input-register blocks on one persistent connection
-(~115ms/cycle measured) and redraws the panel in place.
+(about 115 ms per cycle) and redraws the panel in place.
 """
 
 import argparse
@@ -68,7 +68,7 @@ HIGHLIGHT, RESET = "\x1b[1;33m", "\x1b[0m"
 
 def battery_eta(v):
     """ETA to 100% while charging / 0% while discharging at the current rate.
-    battery_power is negative while charging on this device (verified live)."""
+    battery_power is negative while charging."""
     p, soc, cap = v["battery_power"], v["battery_soc"], v["battery_capacity"]
     if None in (p, soc, cap) or p == 0:
         return ""

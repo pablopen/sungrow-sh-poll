@@ -24,7 +24,7 @@ parser.add_argument("--host", default=os.environ.get("HOST"),
 parser.add_argument(
     "--settings", action="store_true",
     help="also read inverter clock + EMS settings (holding registers; "
-         "~10-20x slower than input registers on this device)",
+         "10 to 20 times slower than input registers)",
 )
 args = parser.parse_args()
 if not args.host:

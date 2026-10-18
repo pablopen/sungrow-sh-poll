@@ -8,7 +8,7 @@ converts to 0-based on the wire.
 # Contiguous ranges read in one Modbus request each. The device caps reads at
 # ~100 registers and the gaps between blocks exceed that, so these 5 input
 # blocks are the minimum request count. Input reads take ~15-25ms each;
-# holding reads (clock/ems) take 120-450ms each on this device.
+# holding reads (clock/ems) take 120-450ms each.
 #
 # name: (start_address, count, holding)
 BLOCKS = {
